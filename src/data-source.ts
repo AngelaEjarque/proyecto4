@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { CreateUser1706651568881 } from "./migrations/1706651568881-CreateUser";
+import { User } from "./models/User";
 
 export const AppDataSource = new DataSource({
 type: "mysql",
@@ -9,8 +10,8 @@ port: 3307,
 username: "root",
 password: "root",
 database: "tattoo",
-entities: [],
-migrations:[CreateUser1706651568881],
+entities: [`${__dirname}/models/*{.js,.ts}`],
+migrations:[`${__dirname}/migrations/*{.js,.ts}`],
 synchronize: false,
 logging: false,
 })
