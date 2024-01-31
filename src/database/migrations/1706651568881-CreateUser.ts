@@ -33,8 +33,8 @@ export class CreateUser1706651568881 implements MigrationInterface {
                 },
                 {
                     name: "phone",
-                    type: "INT",
-                    length: "11",
+                    type: "string",
+                    length: "12",
                 },
                 {                    
                     name: "email",
@@ -43,10 +43,11 @@ export class CreateUser1706651568881 implements MigrationInterface {
                     isUnique: true,
                 },
                 {
-                    name: "password_hash",
+                    name: "password",
                     type: "varchar",
                     length: "255",
                 },
+
                 {                    
                     name: "created_at",
                     type: "timestamp",

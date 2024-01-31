@@ -15,12 +15,12 @@ export class User extends BaseEntity {
     surname!: string;
 
     @Column({ unique: true })
-    phone!: number;
+    phone!: string;
     
     @Column({ unique: true })
     email!: string;
 
     @Column()
-    password_hash!: string;
+    password!: string;
 
 }

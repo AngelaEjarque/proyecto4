@@ -43,7 +43,7 @@ class CreateUser1706651568881 {
                     isUnique: true,
                 },
                 {
-                    name: "password_hash",
+                    name: "password",
                     type: "varchar",
                     length: "255",
                 },

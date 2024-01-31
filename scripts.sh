@@ -7,6 +7,11 @@ npm i -D ts-node
 npm i -D @types/node
 npm i -D @types/express
 
+#Modulos adicionales 
+npm i -D @faker-js/faker
+npm i -D nodemon
+
+
 #typeORM
 npm i typeorm reflect-metadata mysql2
 
@@ -44,13 +49,13 @@ npx tsc --init
 
 
 # Crear migraciones en TypeORM manualmente
-npx typeorm migration:create ./src/migrations/CreateUser
+npx typeorm migration:create ./src/database/migrations/CreateUser
 
 # Ejecutar migraciones en TypeORM 
-npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts 
+npx typeorm-ts-node-commonjs migration:run -d ./src/database/data-source.ts 
 
 # Revierte la última migración en TypeORM. Para revertir las demás, repetir el comando en orden inverso.
-npx typeorm-ts-node-commonjs migration:revert -d ./src/data-source.ts
+npx typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts
 
 
 # Crear modelos
