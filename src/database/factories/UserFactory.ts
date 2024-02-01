@@ -9,6 +9,9 @@ export class UserFactory {
         user.name = faker.person.firstName()
         user.surname = faker.person.lastName()
         user.phone = faker.phone.number()
+        if (user.phone.length > 12) {
+            user.phone = user.phone.slice(0, 12);
+        }
         user.email = faker.internet.email({
             firstName: user.name,
             lastName: user.surname,

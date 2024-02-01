@@ -8,10 +8,10 @@ const app: Application = express();
 app.use(express.json());
 
 //Rutas
-app.get('/api/users', async (req,res) => {
+/*app.get('/api/users', async (req,res) => {
     const allUsers = await User.find();
     res.json(allUsers);
-})
+})*/
 app.use(router)
 
 export default app;
