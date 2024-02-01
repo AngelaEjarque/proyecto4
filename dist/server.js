@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
-const data_source_1 = require("./data-source");
+const data_source_1 = require("./database/data-source");
 const port = 3000;
 (async () => {
     try {
