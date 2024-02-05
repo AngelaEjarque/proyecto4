@@ -4,6 +4,7 @@ import { User } from "../models/User";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import {  LoginUserRequestBody } from "../types/types";
+import jwt from "jsonwebtoken";
 
 export default class userController {
   constructor() {}
@@ -89,6 +90,7 @@ export default class userController {
         where: {
           email: email,
         },
+
       });
 
       // Verificar usuario inexistente
@@ -104,9 +106,20 @@ export default class userController {
           message: "Bad email or password",
         });
       }
+      
+          // Generar token
+
+          const tokenPayload = {
+             userId: user.id?.toString() as string,
+          };
+ 
+          const token = jwt.sign(tokenPayload, "123", {
+             expiresIn: "3h",
+          });
 
       res.status(StatusCodes.OK).json({
         message: "Login successfully",
+        token,
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
