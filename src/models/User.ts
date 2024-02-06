@@ -26,8 +26,8 @@ export class User {
     @Column()
     password_hash!: string;
 
-    // N : N relacionado Role
-    @ManyToMany(() => Role, (role) => role.users)
+    // N : N 
+    @ManyToMany(() => Role, (role) => role.user)
     @JoinTable({
             name:'user_roles',
             joinColumn:{

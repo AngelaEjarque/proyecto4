@@ -75,12 +75,12 @@ export default class userController {
     req: Request<{}, {}, LoginUserRequestBody>,
     res: Response
   ): Promise<void | Response<any>> {
-    const { password, email } = req.body;
+    const { password_hash, email } = req.body;
     const userRepository = AppDataSource.getRepository(User);
 
     try {
       // Validar existencia de email y contraseña
-      if (!email || !password) {
+      if (!email || !password_hash) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: "Email or password is required",
         });
@@ -102,7 +102,7 @@ export default class userController {
       }
 
       // Verificar contraseña valida
-      if (password != user.password_hash) {
+      if (password_hash != user.password_hash) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: "Bad email or password",
         });

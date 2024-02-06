@@ -13,7 +13,7 @@ export interface CreateUserRequestBody {
  
  export interface LoginUserRequestBody {
     email: string;
-    password: string;
+    password_hash: string;
  }
  
  export interface TokenData {
