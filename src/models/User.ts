@@ -1,4 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Role } from "./Role";
+import { Artists } from "./Artist";
+import { Appointment } from "./Appointment";
 
 @Entity("users")
 export class User {
@@ -21,6 +24,28 @@ export class User {
     email!: string;
 
     @Column()
-    password!: string;
+    password_hash!: string;
+
+    // N : N relacionado Role
+    @ManyToMany(() => Role, (role) => role.users)
+    @JoinTable({
+            name:'user_roles',
+            joinColumn:{
+                name: 'user_id',
+                referencedColumnName:"id"
+            },
+            inverseJoinColumn:{
+                name:"role_id",
+                referencedColumnName:"id",
+            }
+        })
+        roles!: Role[];
+
+        @OneToOne(() => Artists, (artists) => artists.users)
+        artist?: Artists;
+    
+        @OneToMany(() => Appointment, (appointment) => appointment.user_id)
+        clientAppointments?: Appointment[];
+    
 
 }

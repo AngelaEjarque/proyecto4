@@ -44,7 +44,7 @@ export default class userController {
 
   async register(req: Request, res: Response): Promise<void | Response<any>> {
     try {
-      const { username, name, surname, password, email, phone } = req.body;
+      const { username, name, surname, password_hash, email, phone, roles } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
 
@@ -54,7 +54,8 @@ export default class userController {
         surname,
         phone,
         email,
-        password,
+        password_hash,
+        roles,
       };
 
       await userRepository.save(newUser);
@@ -101,7 +102,7 @@ export default class userController {
       }
 
       // Verificar contraseña valida
-      if (password != user.password) {
+      if (password != user.password_hash) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: "Bad email or password",
         });
