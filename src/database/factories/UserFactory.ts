@@ -17,13 +17,21 @@ export class UserFactory {
             lastName: user.surname,
             allowSpecialCharacters: true,
         })
-        user.password_hash = bcrypt.hashSync("12345678", 10);
+        user.password_hash = bcrypt.hashSync("1234", 10);
         
         return user;
 
     }
-    static create (count = 1){
-        return Array.from({ length: count }, this.generate);
+
+    static createMany (count = 1){
+
+        const generated = []
+
+        for (let i = 0; i < count; i++) {
+            const item = this.generate();
+            generated.push(item);   
+
+        } return generated;
     }
 
 }

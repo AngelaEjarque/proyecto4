@@ -9,18 +9,7 @@ export class Role {
     @Column({ default: 'Valor predeterminado' })
     name!: string;
 
-    @ManyToMany(() => User, (user) => user.roles)
-    @JoinTable({
-        name: 'user_roles',
-        joinColumn: {
-            name: 'role_id',
-            referencedColumnName: "id"
-        },
-        inverseJoinColumn: {
-            name: "user_id",
-            referencedColumnName: "id",
-        }
-    })
-    user!: User[];
+
+    user?: User[];
 }
 

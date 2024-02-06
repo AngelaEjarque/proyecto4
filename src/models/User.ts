@@ -29,7 +29,7 @@ export class User {
     // N : N 
     @ManyToMany(() => Role, (role) => role.user)
     @JoinTable({
-            name:'user_roles',
+            name:'users_roles',
             joinColumn:{
                 name: 'user_id',
                 referencedColumnName:"id"
@@ -39,13 +39,11 @@ export class User {
                 referencedColumnName:"id",
             }
         })
-        roles!: Role[];
+    roles!: Role[];
 
-        @OneToOne(() => Artists, (artists) => artists.users)
-        artist?: Artists;
+    @OneToOne(() => Artists, (artists) => artists.users)
+    artist?: Artists;
     
-        @OneToMany(() => Appointment, (appointment) => appointment.user_id)
-        clientAppointments?: Appointment[];
-    
-
+    @OneToMany(() => Appointment, (appointment) => appointment.user_id)
+    clientAppointments?: Appointment[];
 }
