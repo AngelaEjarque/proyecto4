@@ -14,12 +14,12 @@ npx ts-node src/database/seeders/DatabaseSeeder.ts
 
 # Crear migraciones manualmente
 npx typeorm migration:create ./src/database/migrations/CreateRoles
-npx typeorm migration:create ./src/database/migrations/CreateUsers
+npx typeorm migration:create ./src/database/migrations/CreateUser
 npx typeorm migration:create ./src/database/migrations/CreateUsersRoles
-npx typeorm migration:create ./src/database/migrations/CreateStudents
-npx typeorm migration:create ./src/database/migrations/CreateTeachers
-npx typeorm migration:create ./src/database/migrations/CreateCourses
-npx typeorm migration:create ./src/database/migrations/CreateEnrollments
+npx typeorm migration:create ./src/database/migrations/CreateArtist
+npx typeorm migration:create ./src/database/migrations/CreateAppointments
+npx typeorm migration:create ./src/database/migrations/CreateDesigns
+
 
 # Ejecutar migraciones
 npx typeorm-ts-node-commonjs migration:run -d ./src/database/data-source.ts 

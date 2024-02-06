@@ -9,7 +9,6 @@ export interface CreateUserRequestBody {
    user_id: number;
    portfolio: string;
    
-
 }
  
  export interface LoginUserRequestBody {
