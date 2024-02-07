@@ -1,6 +1,9 @@
 import {faker} from '@faker-js/faker'
 import{User} from '../../models/User'
 import bcrypt from "bcrypt";
+import { BaseFactory } from './BaseFactory';
+import { Role } from '../../models/Role';
+
 
 export class UserFactory {
     private static generate(){

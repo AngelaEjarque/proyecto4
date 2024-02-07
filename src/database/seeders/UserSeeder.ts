@@ -8,6 +8,8 @@ export const userSeeder = async() =>{
         await AppDataSource.initialize();
             
             const userRepository = AppDataSource.getRepository(User);
+
+
             const count = 10;
 
             //generar usuarios

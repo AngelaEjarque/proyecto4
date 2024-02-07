@@ -11,5 +11,6 @@ export class Role {
 
 
     user?: User[];
+    role_name: any;
 }
 

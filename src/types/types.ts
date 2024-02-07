@@ -3,7 +3,8 @@ export interface CreateUserRequestBody {
     name: string;
     surname: string;
     password_hash: string;
-    email: string;   
+    email: string;  
+    phone: string 
  }
  export interface CreateArtistRequestBody {
    user_id: number;
@@ -19,6 +20,7 @@ export interface CreateUserRequestBody {
  export interface TokenData {
     userId: string;
     userRoles: string[];
+    email?: string;
  }
 
  export interface CreateAppointmentsRequestBody {
