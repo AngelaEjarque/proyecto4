@@ -6,5 +6,5 @@ import { userSeeder } from "./UserSeeder";
 (async() => {
     await roleSeeder();
     await userSeeder();
-    //await artistSeeder();    
+    await artistSeeder();    
 })();

@@ -3,11 +3,12 @@ import userController from "../controllers/userController";
 import { auth } from "../middlewares/auth";
 import { ProfileController } from "../controllers/profileController";
 import { isSuperAdmin } from "../middlewares/isSuperAdmin";
+import { isAdmin } from "../middlewares/isAdmin";
 
 const router = express.Router();
 const ctrl = new userController();
 
-router.get("/", auth, isSuperAdmin, ctrl.getAll);
+router.get("/", auth, isAdmin, ctrl.getAll);
 router.get("/:id", auth, ctrl.getById);
 router.get("/profile", auth, ctrl.userProfile);  //perfil usuario
 router.post("/register", ctrl.register);

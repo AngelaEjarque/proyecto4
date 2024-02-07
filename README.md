@@ -72,7 +72,7 @@ Tecnologías utilizadas:
             "email": "test3@test.com",
             "password_hash": "test1233"
 
-    -  Obtener todos los usuarios (super_admin)
+    -  Obtener todos los usuarios 
     
             GET http://localhost:3000/api/users
 

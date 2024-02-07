@@ -51,22 +51,22 @@ export class AuthController {
                  message: "Email or password is required",
               });
            }
-  
+
            // Encontrar un usuario por email
            const user = await userRepository.findOne({
-              where: {
-                 email: email,
-              },
-              relations: {
-                 roles: true,
-              },
-              select: {
-                 roles: {
-                    role_name: true,
-                 },
-              },
-           });
-  
+            where: {
+               email: email,
+            },
+            relations: {
+               roles: true,
+            },
+            select: {
+               roles: {
+                  name: true,
+               },
+            },
+         });
+
            // Usuario inexistente
            if (!user) {
               return res.status(StatusCodes.BAD_REQUEST).json({
@@ -77,7 +77,7 @@ export class AuthController {
               password_hash,
               user.password_hash
            );
-  
+
            // Verificar contraseña valida
            if (!isPasswordValid) {
               return res.status(StatusCodes.BAD_REQUEST).json({
@@ -86,8 +86,8 @@ export class AuthController {
            }
   
            // Generar token
-           const roles = user.roles.map((role) => role.role_name);
-  
+           const roles = user.roles.map((role) => role.name);
+           console.log(roles)
            const tokenPayload: TokenData = {
              email:  user.email,
              userId: user.id?.toString() as string,
