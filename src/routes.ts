@@ -12,7 +12,7 @@ router.use("/auth", authRoutes )
 //user routes
 router.use("/api/users", userRoutes);
 router.use("/api/artist", artistRoutes);
-router.use("/api/appointment", appointmentRoutes);
+router.use("/api/appointments", appointmentRoutes);
 
 
 export default router;

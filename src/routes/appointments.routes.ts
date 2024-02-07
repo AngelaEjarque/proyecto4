@@ -10,11 +10,11 @@ const router = express.Router();
 const appointmentController= new AppointmentController();
 
 router.get("/:id",auth, appointmentController.getById);
-router.post("/create", appointmentController.create);
-router.patch("/:id", appointmentController.update);
-router.delete("/:id", appointmentController.delete);
-router.get("/miscitas/:id", auth, isAdmin, appointmentController.getByArtistId);
-router.get("/miscitasuser/:id", auth, isUser, appointmentController.getByUserId);
+router.post("/create", auth, appointmentController.create);
+router.patch("/:id", auth, appointmentController.update);
+router.delete("/:id", auth,appointmentController.delete);
+router.get("/artistdates/:id", auth, isAdmin, appointmentController.getByArtistId);
+router.get("/userdates/:id", auth, isUser, appointmentController.getByUserId);
 
 
 export default router;

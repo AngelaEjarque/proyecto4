@@ -130,6 +130,7 @@ export class AppointmentController implements Controller {
             date,
             hour,
          }
+console.log(newAppointment);         
           await appointmentRepository.save(newAppointment);
          res.status(201).json(newAppointment);
       } catch (error: any) {

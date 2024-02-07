@@ -19,15 +19,17 @@ Tattoo Backend
 </details>
 
 ## Objetivo
-Este proyecto requería una API funcional conectada a una base de datos 
+Obtener API funcional conectada a una base de datos 
 
 ## Sobre el proyecto
-Backend correspondiente al sistema de gestión de citas para un estudio de tatuajes. 
+En este proyecto, realizamos el backend correspondiente al sistema de gestión de citas para un estudio de tatuajes. 
+
+Diferenciamos 3 roles: user, admin y super_admin
 
 
 ## Stack
-Tecnologías utilizadas:
-
+Tecnologías utilizadas: 
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![NodeJS](https://img.shields.io/badge/Node.js-393?logo=nodedotjs&logoColor=fff&style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Node) [![ExpressJS](https://img.shields.io/badge/Express-000?logo=express&logoColor=fff&style=flat)](https://expressjs.com/) [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=flat)](https://dev.mysql.com/doc/) [![JWT](https://img.shields.io/badge/JSON%20Web%20Tokens-000?logo=jsonwebtokens&logoColor=fff&style=flat)](https://jwt.io/introduction) [![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff&style=flat)](https://developer.mozilla.org/en-US/docs/Glossary/Git)
 
 
 ## Diagrama BD
@@ -35,6 +37,7 @@ Tecnologías utilizadas:
 
 
 ## Instalación en local
+
 1. Clonar el repositorio
 2. ` $ npm install `
 3. Conectamos nuestro repositorio con la base de datos 
@@ -44,61 +47,57 @@ Tecnologías utilizadas:
 7. ...
 
 ## Endpoints
-<details>
-<summary>Endpoints</summary>
 
-- USERS
 
-    - Crear User
+- LOGIN <details>
+
+        POST http://localhost:3000/auth/login
+    body:
+         "email": "test3@test.com",
+         "password_hash": "1234"
+
+
+- USERS <details>
+
+    -Crear User
 
             POST http://localhost:3000/api/users/register
             
         body:
-       
-        {
-            "username": "test3",
-            "name": "test3",
-            "surname": "test3",
-            "phone": "742.726.3724",
-            "email": "test3@test.com",
-            "password_hash": "test1233"
-        }
+        {"name": "nuevo nombre"}
 
     
-    - LOGIN
-
-            POST http://localhost:3000/api/auth/login  
-        body:
-            "email": "test3@test.com",
-            "password_hash": "test1233"
-
-    -  Obtener todos los usuarios 
+    - Obtener todos los usuarios (role admin)
     
             GET http://localhost:3000/api/users
 
     
-    - Get user by id 
+    -Get user by id 
     
             GET http://localhost:3000/api/users/:id
 
             
-    - Update user info 
+    -Update user info 
     
-            PATCH http://localhost:3000/api/user/:id
+            PATCH http://localhost:3000/api/users/:id
         body: 
           
                 
                 {
-                "username" : "Cambio333UsiarioPrueba",
-                "name": "Cam33UsiarioPr",
-                "surname": "USUCita",
+                "username" : "testupdate",
+                "name": "testupdate",
+                "surname": "Utest",
                 "password_hash": "123456",
-                "email" : "Priue@example.com"
+                "email" : "test@example.com"
                  }
 
-- ARTISTAS
+    -Borrar usuario  (role super_admin)
     
-    -Crear tatuador (super_admin)
+            DELETE http://localhost:3000/api/user/:id
+
+- ARTISTAS <details>
+    
+    -Crear tatuador (role super_admin)
         
       POST http://localhost:3000/api/artist/create
       
@@ -119,40 +118,47 @@ Tecnologías utilizadas:
 
     -Perfil del tatuador (con id)
 
-        GET http://localhost:3000/api/artist/artistprofile/:id
+        GET http://localhost:3000/api/artist/artistprof/:id
         
     -Ver todos los tatuadores
     
         GET http://localhost:3000/api/artist
 
+    -Borrar artista  (role super_admin)
+    
+        DELETE http://localhost:3000/api/artist/:id
 
-- CITAS
+
+- CITAS <details>
 
     -Crear Cita
 
             POST http://localhost:3000/api/appointment/create
             
     body:
-      
             
             {
-                "user_id": 9,
-                "artist_id": 7,
+                "user_id": 1,
+                "artist_id": 5,
                 "date": "2024-04-12",
                 "hour": "13:00h"
             }
             
-    -Ver todas las citas (super_admin)
+    -Ver las citas de usuario (role user)
         
-            GET http://localhost:3000/api/appointment
+            GET http://localhost:3000/api/appointment/userdates/:id
             
+    -Ver las citas de artista (role admin)
+        
+             GET http://localhost:3000/api/appointment/artistdates/:id
+
     -Actualizar citas (con id)
     
-            PATCH http://localhost:3000/api/appointment/1
+            PATCH http://localhost:3000/api/appointment/:id
       
     -Borrar cita (con id de cita)
     
-            DELETE http://localhost:3000/api/appointment/1
+            DELETE http://localhost:3000/api/appointment/:id
             
   
  

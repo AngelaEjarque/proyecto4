@@ -26,8 +26,7 @@ export class CreateAppointments1707175962340 implements MigrationInterface {
                  },
                   {
                      name: "date",
-                     type: "varchar",
-                     length: "255",
+                     type: "timestamp",
                      isNullable: true                    
                   },
                   {

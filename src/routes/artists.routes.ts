@@ -9,8 +9,8 @@ import { isSuperAdmin } from "../middlewares/isSuperAdmin";
 const router = express.Router();
 const artistController= new ArtistController();
 
-router.get("/", artistController.getAll);
-router.get("/artistprofile/:id",auth, isAdmin, artistController.getByArtistId);
+router.get("/", auth, artistController.getAll);
+router.get("/artistprof/:id",auth, isAdmin, artistController.getByArtistId);
 router.get("/:id", auth, artistController.getById);
 router.post("/create",  auth, isSuperAdmin, artistController.create);
 router.patch("/:id", auth, isSuperAdmin, artistController.update);

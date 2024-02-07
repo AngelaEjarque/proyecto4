@@ -10,10 +10,9 @@ const ctrl = new userController();
 
 router.get("/", auth, isAdmin, ctrl.getAll);
 router.get("/:id", auth, ctrl.getById);
-router.get("/profile", auth, ctrl.userProfile);  //perfil usuario
+router.get("/profile", auth, ctrl.userProfile); 
 router.post("/register", ctrl.register);
 router.patch("/:id", auth, ctrl.update);
-router.post('/api/login',ctrl.login)
 router.delete("/:id", auth, isSuperAdmin, ctrl.delete);
 router.get("/profile2", auth, ProfileController.userProfile); 
 
