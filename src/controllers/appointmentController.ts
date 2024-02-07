@@ -3,12 +3,10 @@ import { Appointment } from "../models/Appointment";
 import { AppDataSource } from "../database/data-source";
 import { Controller } from "./Controller";
 import { CreateAppointmentsRequestBody } from "../types/types";
-import bcrypt from "bcrypt";
 import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
 
 
-//----------------------------------------------------------------------
 
 export class AppointmentController implements Controller {
    register(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>): Promise<void | Response<any, Record<string, any>>> {
@@ -131,7 +129,6 @@ export class AppointmentController implements Controller {
             artist_id,
             date,
             hour,
-            
          }
           await appointmentRepository.save(newAppointment);
          res.status(201).json(newAppointment);

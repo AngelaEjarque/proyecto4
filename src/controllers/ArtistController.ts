@@ -3,18 +3,11 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { AppDataSource } from "../database/data-source";
 import { Artists } from "../models/Artist";
-
-import {
-   CreateUserRequestBody,
-   CreateArtistRequestBody,
-   TokenData,
-} from "../types/types";
+import {CreateUserRequestBody,} from "../types/types";
 import bcrypt from "bcrypt";
-
 import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
-import { Role } from "../models/Role";
-// -----------------------------------------------------------------------------
+
 
 export class ArtistController implements Controller {
    register(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>): Promise<void | Response<any, Record<string, any>>> {
@@ -39,7 +32,6 @@ export class ArtistController implements Controller {
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;
-         // console.log(id, "Soy console de getById")
 
          const artistRepository = AppDataSource.getRepository(Artists);
          const artist = await artistRepository.findOneBy({
@@ -131,7 +123,6 @@ export class ArtistController implements Controller {
    async getByArtistId(req: Request, res: Response): Promise<void | Response<any>> { //falta probar
       try {
          const id = +req.params.id;
-         //console.log(id, "Soy console de getByArtistId")
 
          const artistRepository = AppDataSource.getRepository(Artists);
          const artist = await artistRepository.findOneBy({
@@ -146,8 +137,6 @@ export class ArtistController implements Controller {
             }
             
          );
-         // console.log(userArtist, "Soy linea 152")
-
 
          if (!userArtist) {
             return res.status(404).json({

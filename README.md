@@ -31,7 +31,8 @@ Tecnologías utilizadas:
 
 
 ## Diagrama BD
-![AngelaEjarque diagrama mysql workbench](https://github.com/AngelaEjarque/proyecto4/assets/147879332/82e8a95b-d588-49a0-b432-06c086f5c0e2)
+![AngelaEjarque diagrama mysql workbench](https://github.com/AngelaEjarque/proyecto4/assets/147879332/4529795d-767e-4a4b-9573-5df9440d3415)
+
 
 ## Instalación en local
 1. Clonar el repositorio
@@ -50,30 +51,26 @@ Tecnologías utilizadas:
 
     - Crear User
 
-            POST http://localhost:3000/api/userregister
+            POST http://localhost:3000/api/users/register
             
         body:
        
-     
-           {
-            "username": "UserClient",
-            "name": "UserClie",
-            "surname": "Cuser",
-            "password_hash": "123456",
-            "email": "cuser@example.com"
-            }
+        {
+            "username": "test3",
+            "name": "test3",
+            "surname": "test3",
+            "phone": "742.726.3724",
+            "email": "test3@test.com",
+            "password_hash": "test1233"
+        }
 
     
     - LOGIN
 
-            POST http://localhost:3000/api/login  
+            POST http://localhost:3000/api/auth/login  
         body:
-        ``` js
-            {
-                "user": "test",
-                "email": "test3@test.com","password": "test1234"
-            }
-        ```
+            "email": "test3@test.com",
+            "password_hash": "test1233"
 
     -  Obtener todos los usuarios (super_admin)
     
@@ -82,12 +79,12 @@ Tecnologías utilizadas:
     
     - Get user by id 
     
-            GET http://localhost:3000/api/userbyid
+            GET http://localhost:3000/api/users/:id
 
             
     - Update user info 
     
-            PATCH http://localhost:3000/api/update
+            PATCH http://localhost:3000/api/user/:id
         body: 
           
                 
@@ -101,9 +98,9 @@ Tecnologías utilizadas:
 
 - ARTISTAS
     
-    -Crear tatuador
+    -Crear tatuador (super_admin)
         
-      POST http://localhost:3000/api/artist
+      POST http://localhost:3000/api/artist/create
       
     body:  
         
@@ -118,13 +115,13 @@ Tecnologías utilizadas:
 
     -Ver tatuador por id
         
-        GET http://localhost:3000/api/artist/16
+        GET http://localhost:3000/api/artist/:id
 
     -Perfil del tatuador (con id)
 
-        GET http://localhost:3000/api/artist/artistprofile/17
+        GET http://localhost:3000/api/artist/artistprofile/:id
         
-    -Ver todos los tatuadores(super_admin)
+    -Ver todos los tatuadores
     
         GET http://localhost:3000/api/artist
 
@@ -133,7 +130,7 @@ Tecnologías utilizadas:
 
     -Crear Cita
 
-            POST http://localhost:3000/api/appointment
+            POST http://localhost:3000/api/appointment/create
             
     body:
       
@@ -160,12 +157,6 @@ Tecnologías utilizadas:
   
  
                     
-</details>
-
-## Futuras funcionalidades
-[ ] Añadir 
-[ ] 
-
 ## Contribuciones
 Las sugerencias y aportaciones son siempre bienvenidas.  
 

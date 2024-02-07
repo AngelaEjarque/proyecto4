@@ -1,14 +1,19 @@
-import express from 'express';
+import express from "express";
+import userController from "../controllers/userController";
+import { auth } from "../middlewares/auth";
+import { ProfileController } from "../controllers/profileController";
+import { isSuperAdmin } from "../middlewares/isSuperAdmin";
 
 const router = express.Router();
-
-import userController from '../controllers/userController';
-import { auth } from '../middlewares/auth';
-
 const ctrl = new userController();
-router.get('/api/users', auth, ctrl.getAll);
-router.get('/api/userbyid', ctrl.getById);
-router.post('/api/userregister', ctrl.register);
-router.post('/api/login', ctrl.login)
-router.post('/api/update', ctrl.update)
+
+router.get("/", auth, isSuperAdmin, ctrl.getAll);
+router.get("/:id", auth, ctrl.getById);
+router.get("/profile", auth, ctrl.userProfile);  //perfil usuario
+router.post("/register", ctrl.register);
+router.patch("/:id", auth, ctrl.update);
+router.post('/api/login',ctrl.login)
+router.delete("/:id", auth, isSuperAdmin, ctrl.delete);
+router.get("/profile2", auth, ProfileController.userProfile); 
+
 export default router;

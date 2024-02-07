@@ -1,8 +1,8 @@
 import express from "express";
-import test from "./routes/test";
 import userRoutes from "./routes/usersRoutes";
-import { auth } from "./middlewares/auth";
+import artistRoutes from "./routes/artists.routes"
 import authRoutes from "./routes/auth.routes";
+import appointmentRoutes from "./routes/appointments.routes"
 
 const router = express.Router();
 
@@ -11,11 +11,8 @@ router.use("/auth", authRoutes )
 
 //user routes
 router.use("/api/users", userRoutes);
+router.use("/api/artist", artistRoutes);
+router.use("/api/appointment", appointmentRoutes);
 
-// router.get("/hola", test);
-// router.get('/api/users', userRoutes);
-// router.get('/api/userbyid', userRoutes);
-// router.post('/api/userregister', userRoutes);
-// router.post('/api/login', userRoutes)
-// router.post('/api/update', userRoutes)
+
 export default router;

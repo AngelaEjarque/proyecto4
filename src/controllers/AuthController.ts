@@ -67,14 +67,12 @@ export class AuthController {
               },
            });
   
-           // Verificar usuario inexistente
+           // Usuario inexistente
            if (!user) {
               return res.status(StatusCodes.BAD_REQUEST).json({
                  message: "Bad email or password",
               });
            }
-  
-           // Verificar contraseña si el usuario existe
            const isPasswordValid = bcrypt.compareSync(
               password_hash,
               user.password_hash
@@ -88,7 +86,6 @@ export class AuthController {
            }
   
            // Generar token
-  
            const roles = user.roles.map((role) => role.role_name);
   
            const tokenPayload: TokenData = {
