@@ -13,10 +13,35 @@ export default class userController {
     try {
       const userRepository = AppDataSource.getRepository(User);
 
-      console.log(req.query);
+      const page = req.query.page ? Number(req.query.page) : 1;
+      const limit = req.query.page ? Number(req.query.limit) : 5;
 
-      const allUsers = await userRepository.find(); //SELECT * FROM "user"
-      res.status(200).json({ allUsers });
+      interface filter {
+        [key:string]: any; 
+      } 
+      const filter: filter = {
+        select: {
+          username:true,
+          email:true,
+          id:true,
+        },
+        
+      };
+      if (page) {
+        filter.skip = ((page -1) * limit)
+      }
+      if (limit) {
+        filter.take = (limit)
+      }
+
+
+      const [allUsers, count ]= await userRepository.findAndCount(filter); 
+      res.status(200).json({ 
+        count,
+        limit,
+        page,
+        results: allUsers,
+       });
     } catch (error) {
       res.status(500).json({
         message: "Error while getting users",
