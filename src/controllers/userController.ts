@@ -13,8 +13,8 @@ export default class userController {
     try {
       const userRepository = AppDataSource.getRepository(User);
 
-      const page = req.query.page ? Number(req.query.page) : 1;
-      const limit = req.query.page ? Number(req.query.limit) : 5;
+      const page = req.query.page ? Number(req.query.page) : null;
+      const limit = req.query.page ? Number(req.query.limit) : null;
 
       interface filter {
         [key:string]: any; 
@@ -27,7 +27,7 @@ export default class userController {
         },
         
       };
-      if (page) {
+      if (page && limit !== null) {
         filter.skip = ((page -1) * limit)
       }
       if (limit) {
